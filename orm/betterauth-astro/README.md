@@ -1,6 +1,6 @@
 # Better-Auth + Prisma example
 
-This example shows how to implement **authentication** using [Better-Auth](https://better-auth.com/), [Next.js](https://nextjs.org/) and [Prisma](https://www.prisma.io).
+This example shows how to implement **authentication** using [Better-Auth](https://better-auth.com/), [Astro](https://astro.build/) and [Prisma](https://www.prisma.io).
 
 ## Getting started
 
@@ -9,13 +9,13 @@ This example shows how to implement **authentication** using [Better-Auth](https
 Download this example:
 
 ```
-npx try-prisma@latest --template orm/betterauth-nextjs
+npx try-prisma@latest --template orm/betterauth-astro
 ```
 
 Then, navigate into the project directory:
 
 ```
-cd betterauth-nextjs
+cd betterauth-astro
 ```
 
 <details><summary><strong>Alternative:</strong> Clone the entire repo</summary>
@@ -29,7 +29,7 @@ git clone git@github.com:prisma/prisma-examples.git --depth=1
 Install npm dependencies:
 
 ```
-cd prisma-examples/orm/betterauth-nextjs
+cd prisma-examples/orm/betterauth-astro
 npm install
 ```
 
@@ -71,17 +71,17 @@ npx @better-auth/cli@latest secret
 
 2. Add the secret to the `.env`.
 
-3. (Optional) If running on a port other than 3000, add that url to the `trustedOrigins` field in `auth-client.ts`
+3. (Optional) If running on a port other than 4321, add that url to the `trustedOrigins` field in `auth-client.ts`
 
 ```diff
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
-    provider: 'postgres',
+    provider: 'postgresql',
   }),
   emailAndPassword: {
     enabled: true,
   },
-+ trustedOrigins: ['http://localhost:3001'],
++ trustedOrigins: ['http://localhost:4322'],
 })
 ```
 
@@ -91,7 +91,7 @@ export const auth = betterAuth({
 npm run dev
 ```
 
-The server is now running at http://localhost:3000
+The server is now running at http://localhost:4321
 
 ## Switch to another database
 
